@@ -1,0 +1,28 @@
+{
+  "name": "radar-ab2l",
+  "version": "1.0.0",
+  "description": "Radar da AB2L - Associação Brasileira de Lawtechs",
+  "main": "index.js",
+  "repository": "git@github.com:bipbop/radar-ab2l.git",
+  "author": "lf.amorim@bipbop.com.br",
+  "license": "GPLv3",
+  "dependencies": {
+    "contentful": "^5.1.3",
+    "next": "^5.1.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-materialize": "^2.1.2"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0"
+  }
+}
