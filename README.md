@@ -1,24 +1,16 @@
 # radar-ab2l@1.0.0
-
-
 Radar da AB2L - Associação Brasileira de Lawtechs
 
-
-## Installation
-Download node at [nodejs.org](http://nodejs.org) and install it, if you haven't already.
+## Instalação
+Baixe o Node em [nodejs.org](http://nodejs.org) e o instale, isso se você já não o possuir.
 
 ```sh
-npm install radar-ab2l --save
+git clone https://github.com/bipbop/radar-ab2l.git
+yarn
+yarn run dev
 ```
 
-This package is provided in these module formats:
-
-- CommonJS
-
-
-
-
-## Dependencies
+## Dependências
 
 - [contentful](https://github.com/contentful/contentful.js): Client for Contentful's Content Delivery API
 - [react-materialize](https://github.com/react-materialize/react-materialize): Material design components for react
@@ -27,7 +19,7 @@ This package is provided in these module formats:
 - react-dom
 
 
-## Dev Dependencies
+## Dependências de Desenvolvimento
 
 - [eslint-config-airbnb](https://github.com/airbnb/javascript): Airbnb's ESLint config, following our styleguide
 - [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import): Import with sanity.
@@ -36,5 +28,5 @@ This package is provided in these module formats:
 - eslint
 
 
-## License
+## Licença
 [GPLv3](https://www.gnu.org/licenses/quick-guide-gplv3.pt-br.html)
