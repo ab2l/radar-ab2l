@@ -7,7 +7,7 @@ Baixe o Node em [nodejs.org](http://nodejs.org) e o instale, isso se você já n
 ```sh
 git clone https://github.com/bipbop/radar-ab2l.git
 yarn
-yarn run dev
+yarn run dev -p 1337
 ```
 
 ## Dependências

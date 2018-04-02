@@ -1,0 +1,15 @@
+{
+	"plugins": [["react-css-modules", {
+		"filetypes": {
+			".scss": {
+                "syntax" : "postcss-scss",
+                "plugins": ["cssnano"]
+            }
+		}
+	}]],
+	"presets": ["react", ["env", {
+		"targets": {
+			"node": "current"
+		}
+	}]]
+}
