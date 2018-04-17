@@ -10,23 +10,16 @@ yarn
 yarn run dev -p 1337
 ```
 
-## Dependências
+## Variáveis de Ambiente ###
 
-- [contentful](https://github.com/contentful/contentful.js): Client for Contentful's Content Delivery API
-- [react-materialize](https://github.com/react-materialize/react-materialize): Material design components for react
-- next
-- react
-- react-dom
-
-
-## Dependências de Desenvolvimento
-
-- [eslint-config-airbnb](https://github.com/airbnb/javascript): Airbnb's ESLint config, following our styleguide
-- [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import): Import with sanity.
-- [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y): Static AST checker for accessibility rules on JSX elements.
-- [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react): React specific linting rules for ESLint
-- eslint
-
-
-## Licença
-[GPLv3](https://www.gnu.org/licenses/quick-guide-gplv3.pt-br.html)
+```bash
+export RADAR_AB2L_CLOUDINARY_NAME="radarab2l"
+export RADAR_AB2L_CLOUDINARY_KEY="SECRET_KEY"
+export RADAR_AB2L_CLOUDINARY_SECRET="SECRET_API_KEY"
+export RADAR_AB2L_BIPBOP_APIKEY="6057b71263c21e4ada266c9d4d4da613"
+export RADAR_AB2L_DATABASE_DSN="mongodb://localhost:27017/radar-ab2l"
+export RADAR_AB2L_ADDRESS_API="https://api.radar.ab2l.org.br"
+export RADAR_AB2L_ADDRESS="https://radar.ab2l.org.br"
+export RADAR_AB2L_MAILGUN_APIKEY="key-****************************"
+export RADAR_AB2L_MAILGUN_DOMAIN="radar.ab2l.org.br"
+```

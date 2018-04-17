@@ -1,1 +1,6 @@
 extends: airbnb
+rules:
+  react/prop-types: 0
+  react/jsx-closing-tag-location: 0
+  react/prefer-stateless-function: 0
+  react/no-unused-state: 0
