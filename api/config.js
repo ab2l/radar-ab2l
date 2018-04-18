@@ -13,5 +13,10 @@ export default Object.assign(applicationConfiguration, {
   bipbop: {
     apiKey: process.env.RADAR_AB2L_BIPBOP_APIKEY,
   },
-  database: process.env.RADAR_AB2L_DATABASE_DSN,
+  database: (process.env.RADAR_AB2L_DATABASE_DSN || 'mongodb://127.0.0.1/radar'),
+  redis: process.env.RADAR_AB2L_REDIS_DSN,
+  http: {
+    port: (process.env.RADAR_AB2L_HTTP_PORT ?
+      parseInt(process.env.RADAR_AB2L_HTTP_PORT, 10) : 3000) /* DEFAULT HTTP PORT 3000 */,
+  },
 });

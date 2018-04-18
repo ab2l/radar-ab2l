@@ -21,19 +21,25 @@ export default class SignUp extends React.Component {
 
                     <div className="field">
                       <div className="control">
-                        <input className="input is-large" type="email" ref={(f) => { this.cnpj = f; }} placeholder="CPF do Resp. Legal" />
+                        <input className="input is-large" type="text" ref={(f) => { this.cnpj = f; }} placeholder="CPF do Resp. Legal" />
                       </div>
                     </div>
 
                     <div className="field">
                       <div className="control">
-                        <input className="input is-large" type="email" ref={(f) => { this.cnpj = f; }} placeholder="CNPJ da Empresa" />
+                        <input className="input is-large" type="text" ref={(f) => { this.nascimento = f; }} placeholder="Data de Nascimento" />
                       </div>
                     </div>
 
                     <div className="field">
                       <div className="control">
-                        <input className="input is-large" name="email" type="email" placeholder="Endereço de Email" />
+                        <input className="input is-large" name="email" placeholder="Endereço de Email" />
+                      </div>
+                    </div>
+
+                    <div className="field">
+                      <div className="control">
+                        <input className="input is-large" type="text" ref={(f) => { this.cnpj = f; }} placeholder="CNPJ da Empresa" />
                       </div>
                     </div>
 
@@ -44,9 +50,15 @@ export default class SignUp extends React.Component {
                     </div>
 
                     <div className="field">
+                      <div className="control">
+                        <input className="input is-large" type="password" placeholder="Confirmar Senha" />
+                      </div>
+                    </div>
+
+                    <div className="field">
                       <label className="checkbox" htmlFor="agree"> <input type="checkbox" name="agree" id="agree" /> Estou ciente dos termos de serviço.</label>
                     </div>
-                    <button className="button is-block is-info is-large is-fullwidth">Entrar</button>
+                    <input type="submit" className="button is-block is-info is-large is-fullwidth" value="Entrar" />
                   </form>
                 </div>
                 <p className="has-text-grey">

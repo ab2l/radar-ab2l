@@ -1,6 +1,7 @@
 # radar-ab2l@1.0.0
 Radar da AB2L - Associação Brasileira de Lawtechs
 
+API: https://www.getpostman.com/collections/770ef384290804953132
 ## Instalação
 Baixe o Node em [nodejs.org](http://nodejs.org) e o instale, isso se você já não o possuir.
 
@@ -22,4 +23,5 @@ export RADAR_AB2L_ADDRESS_API="https://api.radar.ab2l.org.br"
 export RADAR_AB2L_ADDRESS="https://radar.ab2l.org.br"
 export RADAR_AB2L_MAILGUN_APIKEY="key-****************************"
 export RADAR_AB2L_MAILGUN_DOMAIN="radar.ab2l.org.br"
+export RADAR_AB2L_HTTP_PORT="80"
 ```
