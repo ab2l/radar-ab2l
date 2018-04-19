@@ -3,6 +3,7 @@ import React from 'react';
 import urlJoin from 'url-join';
 import isEmail from 'is-email';
 import gravatar from 'gravatar-url';
+import Head from 'next/head';
 
 import config from '../config';
 
@@ -25,7 +26,6 @@ export default class Login extends React.Component {
 
   forgot(e) {
     e.preventDefault();
-    console.log(this.email.value);
   }
 
   login(e) {
@@ -54,8 +54,18 @@ export default class Login extends React.Component {
   }
 
   render() {
+    if (this.content && this.content === 200) {
+      return (<div />);
+    }
+
     return (<div>
       <Header />
+
+      <Head>
+        <meta name="robots" content="noindex" />
+        <title>Entrar | AB2L</title>
+      </Head>
+
       <div className="container page" style={pageStyle}>
         <section className="hero">
           <div className="hero-body">

@@ -19,10 +19,13 @@ export default (req, res, next) => {
     })
     .validate(req.body)
     .then(({ email, password }) => associated.findOne({ email }, { _id: true, password: true })
-      .then(data => testPassword(password, data).then((match) => {
-        if (!match) throw new Error(authFailed);
-        return data;
-      })))
+      .then((data) => {
+        if (!data) throw new Error(authFailed);
+        return testPassword(password, data).then((match) => {
+          if (!match) throw new Error(authFailed);
+          return data;
+        });
+      }))
     .then(({ _id }) => Promise.all([
       redis.set(`auth-${_id.toString()}`, token, 'EX', '604800'),
       res.json({ _id, token }),

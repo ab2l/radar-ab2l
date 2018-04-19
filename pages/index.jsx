@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 
 import CompanysRow from '../components/companys-row';
 import Header from '../components/header';
@@ -10,6 +11,9 @@ import pageStyle from '../style/page';
 export default () => (
   <div>
     <Header />
+    <Head>
+      <title>Radar das Lawtechs</title>
+    </Head>
     <div className="container page" style={pageStyle}>
       <div className="columns">
         <Filter />

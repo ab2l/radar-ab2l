@@ -3,12 +3,16 @@
 import React from 'react';
 import urlJoin from 'url-join';
 import MaskedInput from 'react-text-mask';
+import Head from 'next/head';
+
 
 import Header from '../components/header';
 import Footer from '../components/footer';
 import config from '../config';
 import Notification from '../components/notification';
+import SignupSuccess from '../components/signup-success';
 import pageStyle from '../style/page';
+
 
 const { address } = config;
 const { api } = address;
@@ -42,12 +46,12 @@ export default class SignUp extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        cpf: this.cpf.value,
-        cnpj: this.cnpj.value,
+        cpf: this.cpf.inputElement.value,
+        cnpj: this.cnpj.inputElement.value,
+        birthday: this.birthday.inputElement.value,
         email: this.email.value,
         password: this.password.value,
         confirmPassword: this.confirmPassword.value,
-        birthday: this.birthday.value,
       }),
     }).then(content => Promise.all([content, content.json()]))
       .then(([content, response]) => this.setState({
@@ -56,8 +60,18 @@ export default class SignUp extends React.Component {
   }
 
   render() {
+    if (this.state.content && this.state.content.status === 200) {
+      return <SignupSuccess />;
+    }
+
     return (<div>
       <Header />
+
+      <Head>
+        <meta name="robots" content="noindex" />
+        <title>Associar-se | AB2L</title>
+      </Head>
+
       <div className="container page" style={pageStyle}>
         <section className="hero">
           <div className="hero-body">
@@ -65,7 +79,7 @@ export default class SignUp extends React.Component {
               <div className="column is-4 is-offset-4">
                 <h3 className="title has-text-grey">Cadastro</h3>
                 <p className="subtitle has-text-grey">Preencha sua informações para cadastrar-se.</p>
-                { this.state.response && this.state.response.status !== 200 && <Notification
+                { this.state.content && this.state.content.status !== 200 && <Notification
                   type="danger"
                   message={this.state.response.toString()}
                 /> }
@@ -109,7 +123,7 @@ export default class SignUp extends React.Component {
                     <div className="field">
                       <div className="control">
                         <MaskedInput
-                          mask={[/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, '-', /\d/, /\d/]}
+                          mask={[/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/]}
                           className="input is-large"
                           type="text"
                           ref={(f) => { this.cnpj = f; }}
@@ -149,7 +163,7 @@ export default class SignUp extends React.Component {
                   </form>
                 </div>
                 <p className="has-text-grey">
-                  <a href="/">Precisa de Ajuda?</a>
+                  <a href="https://github.com/bipbop/radar-ab2l/wiki">Precisa de Ajuda?</a>
                 </p>
               </div>
             </div>

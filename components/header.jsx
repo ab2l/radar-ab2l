@@ -13,6 +13,7 @@ export default () => (
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
       <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" rel="stylesheet" />
       <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+      <link href="/static/favicon.png" rel="shortcut icon" type="image/png" />
       <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js" />
       <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" />
     </Head>

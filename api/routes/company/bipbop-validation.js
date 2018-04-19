@@ -3,6 +3,8 @@ import config from '../../config';
 
 const BIPBOP = require('bipbop-webservice');
 
+const cpfMessage = 'O CPF informado não faz parte do QSA do CNPJ.';
+
 const { apiKey } = config.bipbop;
 const webService = new BIPBOP.WebService(apiKey);
 
@@ -46,14 +48,14 @@ function validateCompanyMember(data) {
   if (typeof socios !== 'string') {
     const idx = socios.indexOf(nome);
     if (idx === -1) {
-      throw new Error('O CPF informado não faz parte do CNPJ informado');
+      throw new Error(cpfMessage);
     }
     return data;
   }
 
   if (typeof socios === 'string') {
     if (nome !== socios) {
-      throw new Error('O CPF informado não faz parte do CNPJ informado');
+      throw new Error(cpfMessage);
     }
     return data;
   }

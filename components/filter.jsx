@@ -56,9 +56,6 @@ export default class Filter extends React.Component {
           id="resolucaoConflito"
         />
 
-        <label htmlFor="remember" className="panel-block">
-          <input id="remember" type="checkbox" /> lembrar-me
-        </label>
         <div className="panel-block">
           <button className="button is-link is-outlined is-fullwidth">apagar filtros</button>
         </div>
