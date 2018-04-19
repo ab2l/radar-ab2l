@@ -29,8 +29,7 @@ export default class Company extends Component {
         <div className="content">{summary}</div>
       </div>
       <footer className="card-footer">
-        <a href={`/ficha?id=${id}`} className="card-footer-item">Ficha</a>
-        <a href={`/socios?id=${id}`} className="card-footer-item">Sócios</a>
+        <a href={`/sobre?id=${id}`} className="card-footer-item">Sobre</a>
         <a href={`/site?id=${id}`} className="card-footer-item">Site</a>
       </footer>
     </div>);

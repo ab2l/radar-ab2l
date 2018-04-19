@@ -8,6 +8,11 @@ export const description = {
 };
 
 export default yup.object().shape({
+  img1280by960: yup.string().required().url(),
+  caption1280by960: yup.string().required(),
+  img96by96: yup.string().required().url(),
+  caption96by96: yup.string().required(),
+
   companyType: yup.string().required().oneOf([
     'todas', 'sa', 'ltda', 'eireli', 'mei',
   ]),
@@ -41,7 +46,6 @@ export default yup.object().shape({
   email: yup.array().min(1).of(yup.string().email()),
   employees: yup.array().of(yup.string().yup.string().test('is-uuid', '', u => isUUID.v5(u))),
   phone: yup.array().min(1).of(yup.string().matches(/^(\d{2})\s\d{4,5}-\d{4}$/)),
-  password: yup.string(),
   biography: yup.string().required().min(256),
   summary: yup.string().required().max(256),
 });

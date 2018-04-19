@@ -1,7 +1,7 @@
 export default {
   address: {
-    site: process.env.RADAR_AB2L_ADDRESS || 'https://radar.ab2l.org.br/',
-    api: process.env.RADAR_AB2L_ADDRESS_API || 'https://api.radar.ab2l.org.br/',
+    site: process.env.RADAR_AB2L_ADDRESS || 'http://localhost:1337/',
+    api: process.env.RADAR_AB2L_ADDRESS_API || 'http://localhost:3000/',
   },
   googleAnalytics: 'UA-',
   socialNetworks: {

@@ -1,17 +1,56 @@
+/* global fetch */
 import React from 'react';
-import gravatar from 'gravatar-url';
+import urlJoin from 'url-join';
 import isEmail from 'is-email';
+import gravatar from 'gravatar-url';
+
+import config from '../config';
 
 import Header from '../components/header';
 import Footer from '../components/footer';
+import Notification from '../components/notification';
+
 import pageStyle from '../style/page';
+
+const { address } = config;
+const { api } = address;
 
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: null,
+      query: null, loading: false, content: null, response: null,
     };
+  }
+
+  forgot(e) {
+    e.preventDefault();
+    console.log(this.email.value);
+  }
+
+  login(e) {
+    e.preventDefault();
+
+    if (this.state.loading) return;
+
+    this.setState({
+      loading: true, content: null, response: null, query: null,
+    });
+
+    fetch(urlJoin(api, '/company/login'), {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: this.email.value,
+        password: this.password.value,
+      }),
+    }).then(content => Promise.all([content, content.json()]))
+      .then(([content, response]) => this.setState({
+        content, response, loading: false, query: null,
+      }));
   }
 
   render() {
@@ -24,6 +63,10 @@ export default class Login extends React.Component {
               <div className="column is-4 is-offset-4">
                 <h3 className="title has-text-grey">Perfil</h3>
                 <p className="subtitle has-text-grey">Preencha sua credenciais para continuar.</p>
+                { this.state.response && this.state.response.status !== 200 && <Notification
+                  type="danger"
+                  message={this.state.response.toString()}
+                /> }
                 <div className="box">
                   <figure className="avatar">
                     <img
@@ -37,27 +80,39 @@ export default class Login extends React.Component {
                   }}
                     />
                   </figure>
-                  <form>
+                  <form onSubmit={e => this.login(e)}>
                     <div className="field">
                       <div className="control">
-                        <input className="input is-large" type="email" placeholder="Endereço de e-mail." onChange={event => this.setState({ query: event.target.value })} />
+                        <input
+                          ref={(e) => { this.email = e; }}
+                          className="input is-large"
+                          type="email"
+                          placeholder="Endereço de e-mail."
+                          onChange={event => this.setState({ query: event.target.value })}
+                        />
                       </div>
                     </div>
 
                     <div className="field">
                       <div className="control">
-                        <input className="input is-large" type="password" placeholder="Senha de acesso." />
+                        <input
+                          ref={(e) => { this.password = e; }}
+                          className="input is-large"
+                          type="password"
+                          placeholder="Senha de acesso."
+                        />
                       </div>
                     </div>
-                    <div className="field">
-                      <label className="checkbox" htmlFor="remember"> <input type="checkbox" name="remember" id="remember" /> Continuar autenticado. </label>
-                    </div>
-                    <button className="button is-block is-info is-large is-fullwidth">Entrar</button>
+                    <input
+                      type="submit"
+                      className="button is-block is-info is-large is-fullwidth"
+                      value="Entrar"
+                    />
                   </form>
                 </div>
                 <p className="has-text-grey">
-                  <a href="/">Esqueci a Senha</a>&nbsp;·&nbsp;
-                  <a href="/">Precisa de Ajuda?</a>
+                  <a href="/" onClick={e => this.forgot(e)}>Esqueci a Senha</a>&nbsp;·&nbsp;
+                  <a href="https://br.gravatar.com/" title="Gravatar">Gravatar</a>
                 </p>
               </div>
             </div>

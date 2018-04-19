@@ -3,11 +3,11 @@
 
 import fs from 'fs';
 import path from 'path';
-import get from 'lodash/get';
-
-import express from 'express';
-import Base from 'nano-base';
+import cors from 'cors';
 import morgan from 'morgan';
+import get from 'lodash/get';
+import Base from 'nano-base';
+import express from 'express';
 
 import config from './config';
 import companyRoute from './routes/company';
@@ -17,6 +17,10 @@ const base = Base(config);
 
 const accessLog = path.join(__dirname, '..', 'logs', 'access.log');
 const accessContent = fs.createWriteStream(accessLog, { flags: 'a' });
+
+app.use(cors({
+  allowedHeaders: ['Content-Type', 'X-Token'],
+}));
 
 app.use(morgan('combined', { stream: accessContent }));
 

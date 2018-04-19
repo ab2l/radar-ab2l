@@ -8,10 +8,6 @@ export const description = {
 };
 
 export default yup.object().shape({
-  img1280by960: yup.string().required().url(),
-  caption1280by960: yup.string().required(),
-  img96by96: yup.string().required().url(),
-  caption96by96: yup.string().required(),
   cpf: yup.string()
     .required()
     .test('is-cnpj', '', c => CPF.isValid(c)),
