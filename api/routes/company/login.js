@@ -1,9 +1,11 @@
+/* eslint no-underscore-dangle: 0 */
+
 import yup from 'yup';
 import uuid from 'uuid';
+import _ from 'lodash';
 
 import redis from '../../redis';
 import database from '../../database';
-
 import { testPassword } from './password';
 
 const authFailed = 'Sua senha e/ou endereço de e-mail não conferem.';
@@ -18,7 +20,7 @@ export default (req, res, next) => {
       password: yup.string().required(),
     })
     .validate(req.body)
-    .then(({ email, password }) => associated.findOne({ email }, { _id: true, password: true })
+    .then(({ email, password }) => associated.findOne({ email }, { })
       .then((data) => {
         if (!data) throw new Error(authFailed);
         return testPassword(password, data).then((match) => {
@@ -26,9 +28,12 @@ export default (req, res, next) => {
           return data;
         });
       }))
-    .then(({ _id }) => Promise.all([
-      redis.set(`auth-${_id.toString()}`, token, 'EX', '604800'),
-      res.json({ _id, token }),
+    .then(content => Promise.all([
+      redis.set(`auth-${content._id.toString()}`, token, 'EX', '604800'),
+      res.json(_.omit(Object.assign(content, { token }), [
+        'emailCode',
+        'password',
+      ])),
     ]))
     .catch(e => next(e));
 };

@@ -5,11 +5,19 @@ import isEmail from 'is-email';
 import gravatar from 'gravatar-url';
 import Head from 'next/head';
 
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+} from 'react-google-maps';
+
 import config from '../config';
 
 import Header from '../components/header';
 import Footer from '../components/footer';
 import Notification from '../components/notification';
+import Profile from '../components/profile';
 
 import pageStyle from '../style/page';
 
@@ -26,6 +34,23 @@ export default class Login extends React.Component {
 
   forgot(e) {
     e.preventDefault();
+
+    if (this.state.loading) return;
+
+    this.setState({
+      loading: true, content: null, response: null,
+    });
+
+    fetch(urlJoin(api, '/company/recoverPassword'), {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: this.email.value,
+      }),
+    }).then(() => this.setState({ forgot: true }));
   }
 
   login(e) {
@@ -34,7 +59,7 @@ export default class Login extends React.Component {
     if (this.state.loading) return;
 
     this.setState({
-      loading: true, content: null, response: null, query: null,
+      loading: true, content: null, response: null,
     });
 
     fetch(urlJoin(api, '/company/login'), {
@@ -49,13 +74,36 @@ export default class Login extends React.Component {
       }),
     }).then(content => Promise.all([content, content.json()]))
       .then(([content, response]) => this.setState({
-        content, response, loading: false, query: null,
+        content, response, loading: false,
       }));
   }
 
   render() {
-    if (this.content && this.content === 200) {
-      return (<div />);
+    if (this.state.content && this.state.content.status === 200) {
+      const profile = this.state.response;
+      const marker = profile.geoloc.pop().location;
+      const MapWithAMarker = withScriptjs(withGoogleMap(() => (<GoogleMap
+        defaultZoom={8}
+        defaultCenter={marker}
+      >
+        <Marker position={marker} />
+      </GoogleMap>)));
+
+      return (<div>
+        <Header />
+        <Head>
+          <meta name="robots" content="noindex" />
+          <title>Edição de Perfil | AB2L</title>
+        </Head>
+        <MapWithAMarker
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div />}
+          containerElement={<div style={{ height: '100%', width: '100%' }} />}
+          mapElement={<div style={{ height: '120px' }} />}
+        />
+        <Profile profile={profile} />
+        <Footer />
+      </div>);
     }
 
     return (<div>
@@ -73,6 +121,11 @@ export default class Login extends React.Component {
               <div className="column is-4 is-offset-4">
                 <h3 className="title has-text-grey">Perfil</h3>
                 <p className="subtitle has-text-grey">Preencha sua credenciais para continuar.</p>
+                { this.state.forgot && <Notification
+                  type="success"
+                  message="Você receberá em instantes uma mensagem em sua caixa de entrada com informações para recuperar sua senha."
+                /> }
+
                 { this.state.response && this.state.response.status !== 200 && <Notification
                   type="danger"
                   message={this.state.response.toString()}

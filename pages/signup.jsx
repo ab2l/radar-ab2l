@@ -170,6 +170,8 @@ export default class SignUp extends React.Component {
           </div>
         </section>
       </div>
+      {this.state.loading &&
+    (<div id="loader" className="pageloader is-active"><span className="title">Verificando Dados</span></div>)}
       <Footer />
     </div>
     );

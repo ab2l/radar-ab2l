@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import uuid from 'uuid';
+import googleGeocoding from 'google-geocoder';
 
 import moment from 'moment';
 import 'moment/locale/pt-br';
@@ -11,10 +12,10 @@ import { createKeys, createValidation } from './validations';
 import mail from '../../mail';
 import config from '../../config';
 import database from '../../database';
-
 import validateEmail from '../../../email/validate-email';
 
 const { associated } = database;
+const googleGeocoder = googleGeocoding({ key: config.googleMapsAPI });
 
 export default (req, res, next) =>
   createValidation.validate(_.pick(req.body, Object.keys(createKeys)))
@@ -32,6 +33,21 @@ export default (req, res, next) =>
     .then(data => associated.findOne(_.pick(data, 'email'), { _id: true }).then((count) => {
       if (count) throw new Error('Já existe uma lawtech cadastrada com este e-mail.');
       return data;
+    }))
+    .then(data => new Promise((resolve) => {
+      const pieces = Object.values(_.omit(
+        _.get(data, 'bipbopContentRFB.enderecos.endereco'),
+        'complemento',
+      ));
+      pieces.push('BR');
+      const address = pieces.join(', ');
+      googleGeocoder.find(address, (err, geoloc) => {
+        if (err) {
+          resolve(data);
+          return;
+        }
+        resolve(Object.assign(data, { geoloc }));
+      });
     }))
     .then(data => Promise.all([
       mail.messages().send({

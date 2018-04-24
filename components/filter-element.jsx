@@ -8,6 +8,12 @@ export default class FilterElement extends React.Component {
     };
   }
 
+  active(active) {
+    this.setState({
+      active,
+    });
+  }
+
   render() {
     const { name, id } = this.props;
     return (<a

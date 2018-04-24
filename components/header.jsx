@@ -9,10 +9,11 @@ export default () => (
   <div>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
       <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" rel="stylesheet" />
       <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+      <link href="https://cdn.jsdelivr.net/npm/bulma-pageloader@1.0.1/dist/bulma-pageloader.min.css" rel="stylesheet" />
       <link href="/static/favicon.png" rel="shortcut icon" type="image/png" />
       <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js" />
       <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" />
@@ -24,13 +25,13 @@ export default () => (
           <Burger />
         </div>
         <div className="navbar-menu">
-          <div className="navbar-start">
+          {/* <div className="navbar-start">
             <a className="navbar-item" title="Lawtechs" href="/?t=associados">Lawtech</a>
             <a className="navbar-item" title="Early Stage" href="/?t=distribuicoes">Early Stage</a>
             <a className="navbar-item" title="Escritórios" href="/?t=processos">Escritórios</a>
             <a className="navbar-item" title="Departamentos" href="/?t=advogados">Departamentos</a>
             <a className="navbar-item" title="Prestador de Serviço" href="/?t=escritorios">Prestador de Serviço</a>
-          </div>
+          </div> */}
           <div className="navbar-end">
             <a href="/signup" title="Cadastrar-se" className="navbar-item is-hidden-desktop-only">
               <span className="icon"><i className="fas fa-plus" /></span>
@@ -38,9 +39,9 @@ export default () => (
             <a href="/login" title="Entrar" className="navbar-item is-hidden-desktop-only">
               <span className="icon"><i className="fas fa-lock" /></span>
             </a>
-            <a href="/map" title="Mapa das Lawtechs" className="navbar-item is-hidden-desktop-only">
+            {/* <a href="/map" title="Mapa das Lawtechs" className="navbar-item is-hidden-desktop-only">
               <span className="icon"><i className="fas fa-map" /></span>
-            </a>
+            </a> */}
             <Buttons />
           </div>
         </div>

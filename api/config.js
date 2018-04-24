@@ -2,9 +2,9 @@ import applicationConfiguration from '../config';
 
 export default Object.assign(applicationConfiguration, {
   cloudinary: {
-    name: process.env.RADAR_AB2L_CLOUDINARY_NAME,
-    key: process.env.RADAR_AB2L_CLOUDINARY_KEY,
-    secret: process.env.RADAR_AB2L_CLOUDINARY_SECRET,
+    cloud_name: process.env.RADAR_AB2L_CLOUDINARY_NAME,
+    api_key: process.env.RADAR_AB2L_CLOUDINARY_KEY,
+    api_secret: process.env.RADAR_AB2L_CLOUDINARY_SECRET,
   },
   mailgun: {
     apiKey: process.env.RADAR_AB2L_MAILGUN_APIKEY,

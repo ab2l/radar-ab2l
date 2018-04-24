@@ -19,11 +19,5 @@ export default () => (
           <span>Compartilhar</span>
         </a>
       </p>
-      <p className="control">
-        <a className="button is-primary" href="/">
-          <span className="icon"><i className="fas fa-download" /></span>
-          <span>Livro</span>
-        </a>
-      </p>
     </div>
   </div>);

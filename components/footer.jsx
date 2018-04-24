@@ -1,6 +1,13 @@
 import React from 'react';
 
-export default () => (<footer className="footer" style={{ fontSize: '12px', color: '#333;', padding: '3rem 1.5rem' }}>
+export default () => (<footer
+  className="footer"
+  style={{
+  fontSize: '12px',
+   color: '#333',
+    padding: '3rem 1.5rem',
+}}
+>
   <div className="container">
     <div className="content has-text-centered">
       <p style={{ maxWidth: '326px', lineHeight: '160%', margin: 'auto' }}>
