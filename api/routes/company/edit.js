@@ -2,7 +2,6 @@
 
 import yup from 'yup';
 import uuid from 'is-uuid';
-import _ from 'lodash';
 import mongodb from 'mongodb';
 
 import redis from '../../redis';

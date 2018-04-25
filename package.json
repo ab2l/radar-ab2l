@@ -23,6 +23,7 @@
     "ioredis": "^3.2.2",
     "is-email": "^1.0.0",
     "is-uuid": "^1.0.2",
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.5",
     "mailgun-js": "^0.16.0",
     "mocha": "^5.1.0",

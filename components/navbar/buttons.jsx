@@ -7,7 +7,7 @@ const { address } = config;
 const message = `Descubra, conheça e faça parte do ecossistema das lawtechs da AB2L em ${address.site}`
 
 export default () => (
-  <div className="navbar-item">
+  <div className="navbar-item is-hidden-desktop-only">
     <div className="field is-grouped">
       <p className="control">
         <a

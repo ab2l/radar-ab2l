@@ -1,7 +1,7 @@
 export default {
   address: {
-    site: process.env.RADAR_AB2L_ADDRESS || 'http://localhost:1337/',
-    api: process.env.RADAR_AB2L_ADDRESS_API || 'http://localhost:3000/',
+    site: process.env.RADAR_AB2L_ADDRESS || 'http://site.ab2l.ngrok.io/',
+    api: process.env.RADAR_AB2L_ADDRESS_API || 'http://api.ab2l.ngrok.io/',
   },
   cloudinary: 'radarab2l',
   googleAnalytics: 'UA-',

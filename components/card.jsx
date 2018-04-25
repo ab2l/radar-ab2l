@@ -41,7 +41,7 @@ export default class Company extends Component {
         <div className="content">{truncate(strip(profile.userContext_profile), 256)}</div>
       </div>
       <footer className="card-footer">
-        <a href={`#?${_id}`} onClick={e => onClick(e)} className="card-footer-item">Abrir</a>
+        <a href={`profile?id=${_id}`} onClick={e => onClick(e)} className="card-footer-item">Abrir</a>
       </footer>
     </div>);
   }
