@@ -1,0 +1,130 @@
+﻿
+/*==================== Radar AB2L ===================*/
+
+.flex-radar {
+    padding: 18px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    * {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .ab2l-logo {
+        flex-basis: 190px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        flex-grow: 0;
+
+        img {
+            width: 100%;
+        }
+
+        p {
+            font-size: 13px;
+            color: #9A9A9A;
+            line-height: 18px;
+        }
+    }
+
+    .estruturas-dinamica-0 {
+        border: 2px solid #1DAD00;
+        padding-top: 10px;
+        margin: 20px 8px 20px 8px;
+        flex-basis: 28%;
+
+        h4 {
+            display: block;
+            text-align: left;
+            margin-top: -25px;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 10px 8px 6px 8px;
+            background-color: #1DAD00;
+            font-weight: 300;
+            color: white;
+            font-size: 12px;
+        }
+
+        article {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+
+            img {
+                height: 25px;
+                margin: 9px;
+            }
+        }
+    }
+
+        .estruturas-dinamica-1 {
+        .estruturas-dinamica-0;
+        flex-basis: auto;
+        border: 2px solid #014C7B;
+        h4{ background-color: #014C7B;}
+    }
+
+        .estruturas-dinamica-2 {
+        .estruturas-dinamica-0;
+        flex-basis: 28%;
+        border: 2px solid #B41700;
+        h4{ background-color: #B41700;}
+    }
+
+       .estruturas-dinamica-3 {
+        .estruturas-dinamica-0;
+        flex-basis: auto;
+        border: 2px solid #000000;
+        h4{ background-color: #000000;}
+        article{
+            flex-direction:column;
+        }
+    }
+
+        .estruturas-dinamica-4 {
+        .estruturas-dinamica-0;
+        flex-basis: 48%;
+        border: 2px solid #929292;
+        h4{ background-color: #929292;}
+    }
+
+        .estruturas-dinamica-5 {
+        .estruturas-dinamica-0;
+        flex-basis: 48%;
+        border: 2px solid #F28C02;
+        h4{ background-color: #F28C02;}
+    }
+
+        .estruturas-dinamica-6 {
+        .estruturas-dinamica-0;
+        flex-basis: 34%;
+        border: 2px solid #00A2FF;
+        h4{ background-color: #00A2FF;}
+    }
+
+        .estruturas-dinamica-7 {
+        .estruturas-dinamica-0;
+        flex-basis: 28%;
+        border: 2px solid #EB62A5;
+        h4{ background-color: #EB62A5;}
+    }
+
+        .estruturas-dinamica-8 {
+        .estruturas-dinamica-0;
+        flex-basis: 32%;
+        border: 2px solid #00A79D;
+        h4{ background-color: #00A79D;}
+    }
+
+    div[class^="estruturas-dinamica-"]{
+
+        @media all and (max-width: 1000px){
+             flex-basis: 100%;
+        }
+    }
+
+}

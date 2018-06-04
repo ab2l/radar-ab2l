@@ -1,0 +1,37 @@
+﻿@model List<Tuple<string, List<string>, string, int>>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Radar AB2L</title>
+    <link href="~/assets2/img/ab2l-icon.png" rel="shortcut icon" />
+    <link href="~/Content/radar.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <section class="flex-radar">
+
+        <div class="ab2l-logo">
+            <img src="~/assets2/img/ab2l.png" alt="Alternate Text" />
+            <p>Radar de empresas associadas <br /></p>
+        </div>
+        @foreach(Tuple<string, List<string>, string, int> item in Model)
+        {
+        <div style="border: 2px solid @item.Item3; padding-top: 10px; margin: 20px 8px 20px 8px; flex-basis: @(item.Item2.Count > 7 ? "48%" : item.Item2.Count > 4 ? "28%" : "auto"); flex-">
+            <h4 style="display: block; text-align: left; margin-top: -25px; margin-left: 10px; margin-right: 10px; padding: 10px 8px 6px 8px; background-color: @item.Item3; font-weight: 300; color: white; font-size: 12px;">@item.Item1</h4>
+            <article style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+                @foreach (string imagem in item.Item2)
+                {
+                    <img style="height: 40px; margin: 9px;" src="@imagem" alt="" />
+                }
+            </article>
+        </div>
+        }
+
+
+    </section>
+
+</body>
+</html>
