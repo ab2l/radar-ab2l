@@ -58,6 +58,7 @@ export default class EmailSuccess extends React.Component {
                 }}
                 ><i className="far fa-envelope-open" /> <br /> E-mail validado com sucesso!</h3>
                 <p className="subtitle">Agora só falta o contato da nossa equipe para que você possa aparecer no radar.</p>
+                <p><a href="/login" className="button is-link">Acessar Conta</a></p>
               </div>
             </div>
           </div>

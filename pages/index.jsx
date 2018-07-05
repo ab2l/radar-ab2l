@@ -16,6 +16,14 @@ const { address } = config;
 const { api } = address;
 
 export default class Index extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      filter: {}
+    };
+  }
+
   static async getInitialProps() {
     const response = await fetch(urlJoin(api, '/company/'), {
       method: 'GET',
@@ -25,13 +33,28 @@ export default class Index extends React.Component {
     });
 
     const content = await response.json();
-    return {
-      loading: false,
-      content,
-    };
+    return { content };
+  }
+
+  filter() {
+    const { filter } = this.state;
+    const { content } = this.props;
+
+    const { search } = filter;
+
+    const keys = _.keys(_.pickBy(_.pickBy(filter, x => !!x), (value, key) => key.indexOf(['search']) === -1));
+
+    console.log(keys, search, !keys.length, !search);
+
+    return content
+      .filter(({ userContext_business }) => !keys.length || keys.indexOf(userContext_business) !== -1)
+      .filter(({ bipbopContentRFB, userContext_profile, userContext_history, userContext_products, userContext_contact }) => 
+        !search || [bipbopContentRFB.nome, userContext_profile, userContext_history, userContext_products, userContext_contact].some(val => 
+          new RegExp(search, 'i').test(val)));
   }
 
   render() {
+    const content = this.props;
     return (<div>
       <Header />
       <Head>
@@ -39,20 +62,18 @@ export default class Index extends React.Component {
       </Head>
       <div className="container page" style={pageStyle}>
         <div className="columns">
-          <Filter />
+          <Filter onChange={(filter) => { this.setState({ filter }); }} />
           <div className="column">
-            {this.props.content && _.chunk(this.props.content, 2).map(content =>
+            {content && _.chunk(this.filter(), 2).map(chunk =>
               (<div className="columns">
-                {content.map(profile => (
-                  <div className="column is-half">
+                {chunk.map(profile => (
+                  <div key={profile._id} className="column is-half">
                     <Card onClick={() => this.openProfile(profile)} profile={profile} />
                   </div>))}
               </div>))}
           </div>
         </div>
       </div>
-      {this.props.loading &&
-    (<div id="loader" className="pageloader is-active"><span className="title">Carregando</span></div>)}
       <Footer />
     </div>);
   }

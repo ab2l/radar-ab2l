@@ -8,9 +8,10 @@ import ProfileLogo from './profile/profile-logo';
 import ProfileImage from './profile/profile-image';
 
 import ProfileHistory from './profile/profile-history';
-import ProfilePartners from './profile/profile-partners';
+// import ProfilePartners from './profile/profile-partners';
 import ProfileProducts from './profile/profile-products';
 import ProfileCompany from './profile/profile-company';
+import ProfileContact from './profile/profile-contact';
 import Notification from './notification';
 
 export default class CompanyProfile extends React.Component {
@@ -44,7 +45,6 @@ export default class CompanyProfile extends React.Component {
               <ProfileTag
                 id="business"
                 options={[
-                  'Extração de Dados',
                   'Analytics e Jurimetria',
                   'Automação e Gestão de Documentos',
                   'Conteúdo Jurídico, Educação e Consultoria',
@@ -90,9 +90,9 @@ export default class CompanyProfile extends React.Component {
             <ProfileTabs
               tabs={{
                     company: 'Empresa',
-                    partners: 'Representantes',
                     history: 'História',
                     products: 'Produtos',
+                    contact: 'Contato',
                   }}
               active={this.state.tab}
               onChange={e => this.setState({ tab: e })}
@@ -100,8 +100,8 @@ export default class CompanyProfile extends React.Component {
 
             { this.state.tab === 'company' && <ProfileCompany profile={profile} /> }
             { this.state.tab === 'history' && <ProfileHistory profile={profile} /> }
-            { this.state.tab === 'partners' && <ProfilePartners profile={profile} /> }
             { this.state.tab === 'products' && <ProfileProducts profile={profile} /> }
+            { this.state.tab === 'contact' && <ProfileContact profile={profile} /> }
 
           </div>
         </div>

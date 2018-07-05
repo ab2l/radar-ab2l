@@ -16,7 +16,7 @@ export default () => (<footer
         O conteúdo deste site é licenciado sobre os termos da <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
       </p>
       <p style={{ fontSize: '16px', margin: '12px auto 0' }}>
-        <a href="https://github.com/bipbop/radar-ab2l" title="Código Fonte"><i className="fab fa-github-alt" /></a>
+        <a href="mailto:contato@ab2l.org.br" title="Ajuda"><i className="fas fa-question-circle" /></a>
       </p>
       <p style={{ fontSize: '16px', margin: '12px auto 0' }}>
         <a className="button" href="https://t.me/joinchat/EqNwYEHf1-e4SehRU_YNSQ" title="Código Fonte"><i className="fab fa-telegram" /> &nbsp; Comunidade</a>

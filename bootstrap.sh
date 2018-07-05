@@ -6,11 +6,11 @@ LOGDIR="$DIR/logs/"
 export RADAR_AB2L_HTTP_PORT="3000"
 export RADAR_AB2L_DATABASE_DSN="mongodb://localhost:27017/radar-ab2l"
 export RADAR_AB2L_REDIS_DSN="redis://127.0.0.1:6379/0'"
-export RADAR_AB2L_ADDRESS_API="http://localhost:3000/"
-export RADAR_AB2L_ADDRESS="http://localhost:1337/"
+export RADAR_AB2L_ADDRESS_API="http://radar.ab2l.org.br/api/"
+export RADAR_AB2L_ADDRESS="http://radar.ab2l.org.br/"
 export RADAR_AB2L_CLOUDINARY_NAME="radarab2l"
 export RADAR_AB2L_CLOUDINARY_KEY="794954819776291"
-export RADAR_AB2L_MAILGUN_DOMAIN="bipbop.com.br"
+export RADAR_AB2L_MAILGUN_DOMAIN="radar.ab2l.org.br"
 
 source secrets.sh
 

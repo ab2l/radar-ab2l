@@ -1,81 +1,85 @@
 import React from 'react';
 import FilterElement from './filter-element';
 import FilterType from './filter-type';
+import Filters from '../lib/filter';
 
 export default class Filter extends React.Component {
-  clearState() {
-    this.filterElements.forEach(x => x.active(false));
-    this.filterType.clearState();
+  constructor(props) {
+    super(props);
+    this.filters = new Filters();
+    this.filters.onChange = this.props.onChange;
   }
 
   render() {
+    const { profiles } = this.props;
+
     this.filterElements = [];
     return (<div className="column is-one-quarter">
       <nav className="panel">
         <div className="panel-block">
           <p className="control has-icons-left">
-            <input className="input is-small" type="text" placeholder="pesquisa" />
+            <input
+              className="input is-small"
+              type="text"
+              placeholder="pesquisa"
+              onChange={(event) => { this.filters.define('search', event.target.value); }} />
             <span className="icon is-small is-left">
               <i className="fas fa-search" aria-hidden="true" />
             </span>
           </p>
         </div>
-        <FilterType ref={(e) => { this.filterType = e; }} />
 
         <FilterElement
-          ref={e => this.filterElements.push(e)}
+          filters={this.filters}
+          profiles={profiles}
           name="Analytics e Jurimetria"
           id="analytics"
         />
 
         <FilterElement
-          ref={e => this.filterElements.push(e)}
+          filters={this.filters}
+          profiles={profiles}
           name="Automação e Gestão de Documentos"
           id="automacao"
         />
 
         <FilterElement
-          ref={e => this.filterElements.push(e)}
+          filters={this.filters}
+          profiles={profiles}
           name="Conteúdo Jurídico, Educação e Consultoria"
           id="conteudo"
         />
 
         <FilterElement
-          ref={e => this.filterElements.push(e)}
+          filters={this.filters}
           name="Extração e monitoramento de dados públicos"
           id="extracao"
         />
 
         <FilterElement
-          ref={e => this.filterElements.push(e)}
+          filters={this.filters}
           name="Gestão – Escritórios e Departamentos Jurídicos"
           id="gestao"
         />
 
         <FilterElement
-          ref={e => this.filterElements.push(e)}
+          filters={this.filters}
           name="IA – Setor Público"
           id="iaSetorPublico"
         />
 
         <FilterElement
-          ref={e => this.filterElements.push(e)}
+          filters={this.filters}
           name="Redes de Profissionais"
           id="redesProfissionais"
         />
 
         <FilterElement
-          ref={e => this.filterElements.push(e)}
+          filters={this.filters}
           name="Resolução de conflitos online"
           id="resolucaoConflito"
         />
 
-        <div className="panel-block">
-          <button
-            onClick={() => this.clearState()}
-            className="button is-link is-outlined is-fullwidth"
-          >apagar filtros</button>
-        </div>
       </nav>
     </div>);
   }

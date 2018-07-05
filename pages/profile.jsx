@@ -50,10 +50,10 @@ export default class PageProfile extends React.Component {
       <Header />
       <Head>
         <meta name="robots" content="noindex" />
-        <title>Edição de Perfil | AB2L</title>
+        <title>{profile.bipbopContentRFB.nome} | AB2L</title>
       </Head>
       <MapWithAMarker
-        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyBCz-h1-UxsWaLpQEIGuSqI9MDjC_d1Jgs"
         loadingElement={<div />}
         containerElement={<div style={{ height: '100%', width: '100%' }} />}
         mapElement={<div style={{ height: '120px' }} />}

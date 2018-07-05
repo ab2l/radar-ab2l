@@ -64,7 +64,7 @@ export default class Login extends React.Component {
 
       <Head>
         <meta name="robots" content="noindex" />
-        <title>Entrar | AB2L</title>
+        <title>Recuperar Senha | AB2L</title>
       </Head>
 
       <div className="container page" style={pageStyle}>

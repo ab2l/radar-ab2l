@@ -5,7 +5,7 @@ export default {
   },
   cloudinary: 'radarab2l',
   googleAnalytics: 'UA-',
-  googleMapsAPI: 'AIzaSyCBQOaJbw1t9EUo5Y-m55XJ1wP2DeK-1UM',
+  googleMapsAPI: 'AIzaSyBCz-h1-UxsWaLpQEIGuSqI9MDjC_d1Jgs',
   socialNetworks: {
     facebook: 'https://web.facebook.com/AB2LBrasil/',
   },

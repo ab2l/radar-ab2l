@@ -36,7 +36,10 @@ router.get('/:id', (req, res) => associated.findOne({ _id: mongodb.ObjectId(req.
 }).then(x => res.json(x)));
 
 
-router.get('/', (req, res) => associated.find({}, {
+router.get('/', (req, res) => associated.find({
+  approved: true,
+  emailChecked: true
+}, {
   cpf: false,
   password: false,
   emailCode: false,

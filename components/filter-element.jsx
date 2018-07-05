@@ -8,17 +8,12 @@ export default class FilterElement extends React.Component {
     };
   }
 
-  active(active) {
-    this.setState({
-      active,
-    });
-  }
-
   render() {
-    const { name, id } = this.props;
+    const { name, id, filters } = this.props;
     return (<a
       onClick={(e) => {
         e.preventDefault();
+        filters.define(name, !this.state.active);
         this.setState({
           active: !this.state.active,
         });
