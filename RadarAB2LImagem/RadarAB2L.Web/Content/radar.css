@@ -1,0 +1,25 @@
+﻿/*==================== Radar AB2L ===================*/
+.flex-radar {
+  padding: 18px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.flex-radar * {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.flex-radar .ab2l-logo {
+  flex-basis: 190px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  flex-grow: 0;
+}
+.flex-radar .ab2l-logo img {
+  width: 200px;
+}
+.flex-radar .ab2l-logo p {
+  font-size: 13px;
+  color: #9A9A9A;
+  line-height: 18px;
+}
