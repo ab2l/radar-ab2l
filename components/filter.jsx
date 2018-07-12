@@ -99,6 +99,13 @@ export default class Filter extends React.Component {
           id="tax"
         />
 
+        <FilterElement
+          filters={this.filters}
+          profiles={profiles}
+          name="Regtech"
+          id="regtech"
+        />
+
       </nav>
     </div>);
   }

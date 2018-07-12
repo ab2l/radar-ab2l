@@ -54,6 +54,7 @@ export default class CompanyProfile extends React.Component {
                   'Redes de Profissionais',
                   'Resolução de conflitos online',
                   'Compliance',
+                  'Regtech',
                   'Tax',
                 ]}
                 value={profile.userContext_business || 'Nenhuma Categoria'}
