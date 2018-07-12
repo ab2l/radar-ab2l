@@ -53,6 +53,8 @@ export default class CompanyProfile extends React.Component {
                   'IA – Setor Público',
                   'Redes de Profissionais',
                   'Resolução de conflitos online',
+                  'Compliance',
+                  'Tax',
                 ]}
                 value={profile.userContext_business || 'Nenhuma Categoria'}
                 profile={profile}

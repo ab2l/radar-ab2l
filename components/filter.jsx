@@ -22,7 +22,8 @@ export default class Filter extends React.Component {
               className="input is-small"
               type="text"
               placeholder="pesquisa"
-              onChange={(event) => { this.filters.define('search', event.target.value); }} />
+              onChange={(event) => { this.filters.define('search', event.target.value); }}
+            />
             <span className="icon is-small is-left">
               <i className="fas fa-search" aria-hidden="true" />
             </span>
@@ -78,6 +79,24 @@ export default class Filter extends React.Component {
           filters={this.filters}
           name="Resolução de conflitos online"
           id="resolucaoConflito"
+        />
+
+        <FilterElement
+          filters={this.filters}
+          name="Resolução de conflitos online"
+          id="resolucaoConflito"
+        />
+
+        <FilterElement
+          filters={this.filters}
+          name="Compliance"
+          id="compliance"
+        />
+
+        <FilterElement
+          filters={this.filters}
+          name="Tax"
+          id="tax"
         />
 
       </nav>
