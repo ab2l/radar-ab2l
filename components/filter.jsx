@@ -83,19 +83,13 @@ export default class Filter extends React.Component {
 
         <FilterElement
           filters={this.filters}
-          name="Resolução de conflitos online"
-          id="resolucaoConflito"
-        />
-
-        <FilterElement
-          filters={this.filters}
           name="Compliance"
           id="compliance"
         />
 
         <FilterElement
           filters={this.filters}
-          name="Tax"
+          name="Taxtech"
           id="tax"
         />
 
