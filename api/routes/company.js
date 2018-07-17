@@ -1,7 +1,7 @@
 import express from 'express';
 import mongodb from 'mongodb';
 
-import edit from './company/edit';
+import edit, { name } from './company/edit';
 import login from './company/login';
 import create from './company/create';
 import validateEmail from './company/validate-email';
@@ -25,6 +25,7 @@ router.post('/changePassword', changePassword);
 router.post('/recoverPassword', recoverPassword);
 router.post('/uploadImage', ...upload128Pixels);
 router.post('/edit', edit);
+router.post('/name', name);
 
 router.get('/:id', (req, res) => associated.findOne({ _id: mongodb.ObjectId(req.params.id) }, {
   cpf: false,
@@ -38,7 +39,7 @@ router.get('/:id', (req, res) => associated.findOne({ _id: mongodb.ObjectId(req.
 
 router.get('/', (req, res) => associated.find({
   approved: true,
-  emailChecked: true
+  emailChecked: true,
 }, {
   cpf: false,
   password: false,

@@ -1,3 +1,6 @@
+/* global fetch */
+
+import urlJoin from 'url-join';
 import React from 'react';
 import moment from 'moment';
 import 'moment/locale/pt-br';
@@ -13,6 +16,11 @@ import ProfileProducts from './profile/profile-products';
 import ProfileCompany from './profile/profile-company';
 import ProfileContact from './profile/profile-contact';
 import Notification from './notification';
+import ChangeName from './change-name';
+
+import config from '../config';
+
+const { address } = config;
 
 export default class CompanyProfile extends React.Component {
   constructor(props) {
@@ -25,6 +33,31 @@ export default class CompanyProfile extends React.Component {
 
   render() {
     const { profile } = this.state;
+
+    if (profile.token && this.state.changeName) {
+      return (<ChangeName
+        defaultValue={profile.bipbopContentRFB.nome}
+        onClick={(e, newName) => {
+          e.preventDefault();
+          profile.bipbopContentRFB.nome = newName;
+          this.setState({ changeName: false });
+          debugger;
+          fetch(urlJoin(address.api, '/company/name'), {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              token: profile.token,
+              _id: profile._id,
+              value: newName,
+            }),
+          });
+        }}
+      />);
+    }
+
     return (<div className="hero container">
       <div className="columns">
         <div className="column">
@@ -67,7 +100,16 @@ export default class CompanyProfile extends React.Component {
                 <ProfileLogo profile={profile} />
               </div>
               <div className="column">
-                <h2 className="title">{profile.bipbopContentRFB.nome}</h2>
+                <h2
+                  className="title"
+                  style={{
+                    cursor: profile.token ? 'pointer' : 'inherit',
+                  }}
+                  onClick={(e) => {
+                  e.preventDefault(e);
+                  this.setState({ changeName: true });
+                }}
+                >{profile.bipbopContentRFB.nome}</h2>
                 <h3 className="subtitle">{profile.bipbopContentRFB['natureza-juridica']}</h3>
               </div>
             </div>
