@@ -66,7 +66,7 @@ export default class Index extends React.Component {
               (<div className="columns">
                 {chunk.map(profile => (
                   <div key={profile._id} className="column is-half">
-                    <Card onClick={() => this.openProfile(profile)} profile={profile} />
+                    <Card small onClick={() => this.openProfile(profile)} profile={profile} />
                   </div>))}
               </div>))}
           </div>

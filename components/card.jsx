@@ -15,9 +15,10 @@ export default class Company extends Component {
   render() {
     const { profile } = this.state;
     const { _id } = profile;
-    const { onClick } = this.props;
+    const { onClick, small } = this.props;
 
     return (<div className="card">
+      {!small && (
       <div className="card-image">
         <figure className="image is-4by3">
           <img
@@ -25,7 +26,7 @@ export default class Company extends Component {
             alt="background"
           />
         </figure>
-      </div>
+      </div>)}
       <div className="card-content">
         <div className="media">
           <div className="media-left">
