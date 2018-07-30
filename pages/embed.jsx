@@ -6,7 +6,6 @@ import fetch from 'isomorphic-fetch';
 
 import Card from '../components/card';
 import Header from '../components/header';
-import Footer from '../components/footer';
 import Filter from '../components/filter';
 
 import config from '../config';
@@ -16,11 +15,10 @@ const { address } = config;
 const { api } = address;
 
 export default class Index extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      filter: {}
+      filter: {},
     };
   }
 
@@ -46,15 +44,17 @@ export default class Index extends React.Component {
 
     return content
       .filter(({ userContext_business }) => !keys.length || keys.indexOf(userContext_business) !== -1)
-      .filter(({ bipbopContentRFB, userContext_profile, userContext_history, userContext_products, userContext_contact }) => 
-        !search || [bipbopContentRFB.nome, userContext_profile, userContext_history, userContext_products, userContext_contact].some(val => 
+      .filter(({
+        bipbopContentRFB, userContext_profile, userContext_history, userContext_products, userContext_contact,
+      }) =>
+        !search || [bipbopContentRFB.nome, userContext_profile, userContext_history, userContext_products, userContext_contact].some(val =>
           new RegExp(search, 'i').test(val)));
   }
 
   render() {
     const content = this.props;
     return (<div>
-      <Header />
+      <Header hideNav />
       <Head>
         <title>Radar das Lawtechs</title>
       </Head>
@@ -72,7 +72,6 @@ export default class Index extends React.Component {
           </div>
         </div>
       </div>
-      <Footer />
     </div>);
   }
 }

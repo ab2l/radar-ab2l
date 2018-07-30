@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Brand from './navbar/brand';
 import Buttons from './navbar/buttons';
 
-export default () => (
+export default ({ hideNav }) => (
   <div>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,6 +17,7 @@ export default () => (
       <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js" />
       <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" />
     </Head>
+    {!hideNav && (
     <nav className="navbar has-shadow" aria-label="main navigation">
       <div className="container">
         <div className="navbar-brand">
@@ -34,6 +35,6 @@ export default () => (
           </div>
         </div>
       </div>
-    </nav>
+    </nav>)}
   </div>
 );

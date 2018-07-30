@@ -41,7 +41,6 @@ export default class CompanyProfile extends React.Component {
           e.preventDefault();
           profile.bipbopContentRFB.nome = newName;
           this.setState({ changeName: false });
-          debugger;
           fetch(urlJoin(address.api, '/company/name'), {
             method: 'POST',
             headers: {
